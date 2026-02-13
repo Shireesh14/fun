@@ -46,9 +46,12 @@ body {
 }
 
 .top {
-    top: 10px;
+    top: 2%;               /* move it closer to the very top */
     left: 50%;
     transform: translateX(-50%);
+    max-height: 15vh;      /* prevent it from being too tall on small screens */
+}
+
 }
 
 .left {
@@ -126,7 +129,7 @@ h1 {
 </div>
 
 <script>
-let count = 5;
+let count = 9;
 let countdownEl = document.getElementById("countdown");
 let hackEl = document.getElementById("hack");
 let container = document.getElementById("container");
@@ -152,7 +155,7 @@ let interval = setInterval(function() {
 
     if(count <= 0) {
         clearInterval(interval);
-        document.body.innerHTML = "<div class='end'>😂 JUST KIDDING <br><br> it's just a prank, your safe.  💼✨</div>";
+        document.body.innerHTML = "<div class='end'>😂 JUST KIDDING <br><br> it's just a prank, you're safe.  💼✨</div>";
         confetti();
     }
 }, 1000);
@@ -182,4 +185,3 @@ function confetti() {
 </body>
 </html>
 
-check now. does this cost me in github?
