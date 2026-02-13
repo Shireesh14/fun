@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>System Breach</title>
+
+<style>
+body {
+    margin: 0;
+    background: black;
+    color: white;
+    text-align: center;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    font-size: 60px;
+    color: red;
+    margin-top: 180px;
+    animation: flash 0.3s infinite;
+}
+
+@keyframes flash {
+    0% { background-color: black; }
+    50% { background-color: darkred; }
+    100% { background-color: black; }
+}
+
+.image {
+    position: absolute;
+    width: 250px;
+    border-radius: 15px;
+}
+
+.top { top: 20px; left: 50%; transform: translateX(-50%); }
+.left { top: 120px; left: 50px; }
+.right { top: 120px; right: 50px; }
+.bottom { bottom: 40px; left: 50%; transform: translateX(-50%); }
+
+.shake {
+    animation: shake 0.2s infinite;
+}
+
+@keyframes shake {
+    0% { transform: translate(2px, 2px); }
+    25% { transform: translate(-2px, -2px); }
+    50% { transform: translate(2px, -2px); }
+    75% { transform: translate(-2px, 2px); }
+    100% { transform: translate(2px, 2px); }
+}
+
+#countdown {
+    font-size: 50px;
+    color: yellow;
+}
+
+#hack {
+    font-size: 30px;
+    color: lime;
+    margin-top: 20px;
+}
+</style>
+</head>
+
+<body id="body">
+
+<img src="top.jpg" class="image top">
+<img src="left.jpg" class="image left">
+<img src="right.jpg" class="image right">
+<img src="bottom.jpg" class="image bottom">
+
+
+<h1>You are a fool for clicking the link 🤡</h1>
+
+<div id="countdown">10</div>
+<div id="hack">Initializing hack...</div>
+
+<!-- Clown sound -->
+<audio autoplay>
+  <source src="https://www.soundjay.com/human/sounds/evil-laugh-1.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+let count = 10;
+let countdownEl = document.getElementById("countdown");
+let hackEl = document.getElementById("hack");
+let body = document.getElementById("body");
+
+let hackText = ["Bypassing firewall...",
+                "Accessing camera...",
+                "Downloading files...",
+                "Uploading to dark web...",
+                "Encrypting system..."];
+
+let hackIndex = 0;
+
+let interval = setInterval(function() {
+    count--;
+    countdownEl.innerHTML = count;
+
+    hackEl.innerHTML = hackText[hackIndex % hackText.length];
+    hackIndex++;
+
+    body.classList.add("shake");
+
+    if(count <= 0) {
+        clearInterval(interval);
+        document.body.innerHTML = "<h1 style='font-size:80px;color:red;'>💀 SYSTEM HACKED 💀</h1>";
+        confetti();
+    }
+}, 1000);
+
+function confetti() {
+    for (let i = 0; i < 200; i++) {
+        let conf = document.createElement("div");
+        conf.style.position = "absolute";
+        conf.style.width = "10px";
+        conf.style.height = "10px";
+        conf.style.background = "hsl(" + Math.random()*360 + ", 100%, 50%)";
+        conf.style.top = "-10px";
+        conf.style.left = Math.random() * window.innerWidth + "px";
+        document.body.appendChild(conf);
+
+        let fall = setInterval(function(){
+            conf.style.top = parseInt(conf.style.top) + 5 + "px";
+            if(parseInt(conf.style.top) > window.innerHeight){
+                clearInterval(fall);
+                conf.remove();
+            }
+        }, 20);
+    }
+}
+</script>
+
+</body>
+</html>
